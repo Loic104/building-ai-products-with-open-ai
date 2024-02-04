@@ -1,24 +1,25 @@
+import EpisodePage  from "./EpisodePage.js";
+
 export default {
   name: 'PodcastPage',
+  components:{
+    EpisodePage
+  },
   props: ['podcast'],
 
   setup(props) {
-    const {watch} = Vue
+
+    const {ref} = Vue
 
     const podcast = props.podcast
+    const selectedEpisode = ref(null)
 
-    console.log({props})
 
-
-    watch(podcast, ()=>{
-      console.log({podcast})
-    })
-
-    return{podcast}
+    return {podcast, selectedEpisode}
   },
 
   template: `
-  <div class="container mx-auto">
+    <div v-if="!selectedEpisode" class="container mx-auto flex flex-col flex-start p-8">
         <div v-if="podcast.title"  class="flex flex-col md:flex-row items-center bg-white p-5 rounded shadow">
             <img class="mb-5 md:mb-0 md:mr-5 rounded-full h-48 w-48 object-cover" :src="podcast.image" alt="Podcast Image">
             <div>
@@ -34,12 +35,15 @@ export default {
                 <li v-for="episode of podcast.episodes" class="bg-white p-4 rounded shadow">
                     <details>
                         <summary class="text-lg font-bold">Episode {{episode.number}}: {{episode.title}}</summary>
-                        <p class="text-gray-400 font-sm" v-html="episode.description"></p>
+                        <p class="text-gray-600 font-sm p-4" v-html="episode.description"></p>
+                        <div class="mt-2">
+                            <button class="bg-blue-400 color-white py-1 px-2 rounded-md" @click="selectedEpisode=episode">Go to Episode Page -></button>
+                        </div>
                     </details>
                 </li>
-                <!-- Add more list items for additional episodes -->
             </ul>
         </div>
     </div>
+    <EpisodePage :episode="selectedEpisode" @back="selectedEpisode=null" />
     `,
 };
