@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="charset" value="UTF-8">
+    <meta name="viewport" value="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Include Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="app">
+</div>
+<!-- Include Vue3 via CDN -->
+
+<script type="module">
+    import app from './app.js'
+    const {createApp} = Vue;
+
+    createApp(app).mount('#app');
+</script>
+</body>
+</html>
