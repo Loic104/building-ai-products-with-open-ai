@@ -31,7 +31,7 @@ export default {
         </div>
         <div v-if="podcast?.episodes?.length" class="mt-10">
             <h2 class="text-2xl font-bold mb-5">Episodes</h2>
-            <ul class="space-y-4">
+            <ul class="space-y-4 overflow-scroll">
                 <li v-for="episode of podcast.episodes" class="bg-white p-4 rounded shadow">
                     <details>
                         <summary class="text-lg font-bold">Episode {{episode.number}}: {{episode.title}}</summary>
