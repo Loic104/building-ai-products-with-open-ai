@@ -31,7 +31,7 @@ export default {
   },
 
   template: `
-  <div id="content" class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 h-screen text-gray-800 text-lg fixed h-full w-full">
+  <div id="content" class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-gray-800 text-lg fixed h-full w-full overflow-scroll">
     <HomePage v-if="!podcastFeed" @submit="saveFeed"></HomePage>
     <PodcastPage v-if="podcast" :podcast="podcast"></PodcastPage>
   </div>
